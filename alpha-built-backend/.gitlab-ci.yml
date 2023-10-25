@@ -1,0 +1,21 @@
+image: gradle:7.6.1-jdk17
+
+stages:
+  - build
+  - staticAnalysis
+  - test
+
+variables:
+  # Disable the Gradle daemon to ensure isolated runs of the CI pipeline.
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+
+build-alpha-built-backend:
+  stage: build
+  script:
+    - gradle alpha-built-backend:assemble alpha-built-backend:testClasses
+
+checkStyle-alpha-built-backend:
+  stage: staticAnalysis
+  script:
+    - gradle alpha-built-backend:checkstyleMain alpha-built-backend:checkStyleTest
+  allow_failure: false

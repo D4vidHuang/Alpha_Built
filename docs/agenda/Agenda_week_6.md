@@ -1,0 +1,37 @@
+## Agenda Week 5
+
+---
+
+Date:           08-06-2023\
+Main focus:     Project Progress\
+Chair:          Zhejia Hu\
+Note taker:     Yiming Chen
+
+# Opening
+*Here you check that everybody is present.*
+Stand up meeting, report what we have done during the past week.
+
+# Approval of the agenda
+*Make sure everything that needs to be discussed is in the agenda or add it if something is missing.*
+We need to talk about the following things:\
+1. Summary of last week (still version control, authentication/authorization, connect multi-user with our new UI).
+2. Report the changed requirements.
+3. Feedback from TA (pipline, how is our progress)
+
+# Action points for next week (Scrum board)
+*Every week you fill the Scrum board with new action points for that week. See the to do list for the items you should implement.*
+We'd like to make sure the following things will start next week:
+1. We will discuss about our next sprint after the TA meeting.
+
+# Any other business
+*If anybody has something that should be discussed but came up with that after the agenda was finalized (in point 2), he/she should bring that up now so that it can be discussed after all.*
+
+
+# Questions for the TA
+*Your TA will visit you in the second half of the lab session. Note down all questions that you have so that you can ask them then.*
+
+# Question round
+*If there are any questions, now is the time to ask them.*
+
+# Closing
+*Now you can start working on the project. Good luck!*

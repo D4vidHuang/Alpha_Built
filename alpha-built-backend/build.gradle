@@ -1,0 +1,84 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.0.7'
+    id 'io.spring.dependency-management' version '1.1.0'
+    // Test coverage
+    id 'jacoco'
+    // Code style
+    id 'checkstyle'
+}
+
+group = 'com.ecadi'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter'
+    implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.0")
+//    implementation 'javax.persistence:persistence-api:1.0.2'
+
+    compileOnly 'org.projectlombok:lombok'
+    runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+    implementation group: 'com.alibaba', name: 'fastjson', version: '1.1.25'
+    implementation group: 'io.netty', name: 'netty-all', version: '4.1.24.Final'
+    implementation 'org.hibernate.validator:hibernate-validator:8.0.1.Final'
+//    implementation group: 'org.mockito', name: 'mockito-inline', version: '5.2.0'
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+checkstyle {
+    toolVersion "8.37"
+    configFile = file("${rootDir}/config/checkstyle/checkstyle.xml")
+    ignoreFailures = false
+    maxErrors = 0
+    maxWarnings = 0
+}
+
+test {
+    useJUnitPlatform()
+    jacoco {
+        enabled = true
+        includes = ['com.ecadi.alphabuiltbackend.*']
+        excludes = []
+    }
+}
+
+
+jacocoTestCoverageVerification() {
+    dependsOn test
+    violationRules {
+        rule {
+            enabled = true
+            element = 'CLASS'
+            includes = ['com.ecadi.alphabuiltbackend.*']
+
+            limit {
+                counter = 'BRANCH'
+                value = 'COVEREDRATIO'
+                minimum = 0.1
+            }
+        }
+    }
+}
